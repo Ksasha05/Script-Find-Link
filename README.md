@@ -15,8 +15,6 @@ using OpenQA;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System.IO;
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
 
 
 namespace nalichie
@@ -53,30 +51,6 @@ namespace nalichie
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Articles = new[]
-            {
-                new {
-                    Id = "101", Name = "C++"
-                },
-                new {
-                    Id = "102", Name = "Python"
-                },
-                new {
-                    Id = "103", Name = "Java Script"
-                },
-                new {
-                    Id = "104", Name = "GO"
-                },
-                new {
-                    Id = "105", Name = "Java"
-                },
-                new {
-                    Id = "106", Name = "C#"
-                }
-            };
-
-            //string filepath_xlsx = Path.Combine(Environment.CurrentDirectory, "output.xlsx");
-
             for (int i = 0; i < list.Count; i++)
             {
                 web.Navigate().GoToUrl(list[i]);
@@ -84,37 +58,6 @@ namespace nalichie
                 //richTextBox1.AppendText(text);
 
                 string filepath = Path.Combine(Environment.CurrentDirectory, "output.txt");
-
-                /*ExcelPackage excel = new ExcelPackage();
-                var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
-                workSheet.DefaultRowHeight = 12;
-
-                workSheet.Row(1).Height = 20;
-                workSheet.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                workSheet.Row(1).Style.Font.Bold = true;
-
-                workSheet.Cells[1, 1].Value = "S.No";
-                workSheet.Cells[1, 2].Value = "Id";
-                workSheet.Cells[1, 2].Value = "Name";
-
-                
-                //FileInfo excelFile = new FileInfo(Path.Combine(Environment.CurrentDirectory, "exel.xlsx"));
-                string excelFilePath = Path.Combine(Environment.CurrentDirectory, "exel.xlsx");
-                if (File.Exists(excelFilePath))
-                    File.Delete(excelFilePath);
-
-                FileStream fs = File.Create(excelFilePath);
-                File.WriteAllBytes(excelFilePath, excel.GetAsByteArray());
-
-                excel.Dispose();*/
-
-                /*int recordIndex = 2;
-                foreach(var article in Articles)
-                {
-                    workSheet.Cells[recordIndex, 1].Value = (recordIndex - 1).ToString();
-                }*/
-
-
 
                 using (StreamWriter sw = File.Exists(filepath) ? File.AppendText(filepath) : File.CreateText(filepath))
                 {
